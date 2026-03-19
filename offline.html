@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#02a75a">
+  <title>Offline - Anako Technician Platform</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e9f5ee 100%);
+      color: #1f2937;
+      text-align: center;
+      padding: 24px;
+    }
+    .card {
+      max-width: 460px;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      margin: 0 0 12px;
+      color: #018a4a;
+      font-size: 1.6rem;
+    }
+    p {
+      margin: 0 0 20px;
+      line-height: 1.5;
+    }
+    a {
+      display: inline-block;
+      background: #02a75a;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 16px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>You are offline</h1>
+    <p>Anako could not reach the network right now. Check your connection and try again.</p>
+    <a href="./index.php">Retry</a>
+  </div>
+</body>
+</html>

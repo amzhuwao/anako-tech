@@ -118,6 +118,56 @@ $page_title = $status_filter ? ucfirst($status_filter) . " Technicians" : "All T
             margin-left: 250px;
             padding: 30px;
         }
+        .mobile-breadcrumb-wrap {
+            display: none;
+        }
+        .mobile-breadcrumb {
+            background: white;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+        .mobile-breadcrumb .breadcrumb {
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+        .mobile-breadcrumb .breadcrumb-item a {
+            text-decoration: none;
+            color: #02a75a;
+            font-weight: 600;
+        }
+        .mobile-breadcrumb .breadcrumb-item.active {
+            color: #333;
+            font-weight: 600;
+        }
+        .mobile-quick-links {
+            display: none;
+            margin-bottom: 16px;
+        }
+        .mobile-quick-links-list {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 2px 0;
+            scrollbar-width: thin;
+        }
+        .mobile-quick-link {
+            white-space: nowrap;
+            background: #ffffff;
+            border: 1px solid #dfe3e8;
+            color: #333;
+            border-radius: 999px;
+            padding: 7px 12px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .mobile-quick-link.active {
+            background: #02a75a;
+            color: #fff;
+            border-color: #02a75a;
+        }
         .page-title {
             font-size: 28px;
             font-weight: bold;
@@ -180,16 +230,25 @@ $page_title = $status_filter ? ucfirst($status_filter) . " Technicians" : "All T
         }
         @media (max-width: 768px) {
             .sidebar {
-                width: 100%;
-                position: static;
+                display: none;
             }
             .main-content {
                 margin-left: 0;
+                padding: 20px 14px;
+            }
+            .mobile-breadcrumb-wrap {
+                display: block;
+            }
+            .mobile-quick-links {
+                display: block;
             }
         }
     </style>
-    <link rel="stylesheet" href="/anako-tech/assets/css/affiliate-theme.css">
-    <link rel="icon" type="image/png" href="/anako-tech/assets/images/branding/anako-favicon.png">
+    <link rel="stylesheet" href="<?php echo appUrl('assets/css/affiliate-theme.css'); ?>">
+    <link rel="icon" type="image/png" href="<?php echo appUrl('assets/images/branding/anako-favicon.png'); ?>">
+    <meta name="theme-color" content="#02a75a">
+    <link rel="manifest" href="<?php echo appUrl('manifest.webmanifest'); ?>">
+    <link rel="apple-touch-icon" href="<?php echo appUrl('assets/images/branding/anako-favicon.png'); ?>">
 </head>
 <body>
     <!-- Navbar -->
@@ -228,6 +287,26 @@ $page_title = $status_filter ? ucfirst($status_filter) . " Technicians" : "All T
 
             <!-- Main Content -->
             <div class="main-content">
+                <div class="mobile-breadcrumb-wrap">
+                    <nav class="mobile-breadcrumb" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="<?php echo appUrl('index.php'); ?>">Home</a></li>
+                            <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?php echo $page_title; ?></li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="mobile-quick-links" aria-label="Dashboard menu">
+                    <div class="mobile-quick-links-list">
+                        <a href="dashboard.php" class="mobile-quick-link">Dashboard</a>
+                        <a href="technicians.php" class="mobile-quick-link <?php echo !$status_filter ? 'active' : ''; ?>">Technicians</a>
+                        <a href="pending.php" class="mobile-quick-link <?php echo $status_filter === 'Pending' ? 'active' : ''; ?>">Pending</a>
+                        <a href="approved.php" class="mobile-quick-link <?php echo $status_filter === 'Approved' ? 'active' : ''; ?>">Approved</a>
+                        <a href="rejected.php" class="mobile-quick-link <?php echo $status_filter === 'Rejected' ? 'active' : ''; ?>">Rejected</a>
+                        <a href="search.php" class="mobile-quick-link">Search</a>
+                    </div>
+                </div>
+
                 <h1 class="page-title"><?php echo $page_title; ?></h1>
 
                 <?php if (!empty($message)): ?>
@@ -325,6 +404,11 @@ $page_title = $status_filter ? ucfirst($status_filter) . " Technicians" : "All T
         </div>
     </div>
 
+    <script>
+        window.ANAKO_APP_BASE = <?php echo json_encode(rtrim(appUrl(''), '/')); ?>;
+    </script>
+    <script src="<?php echo appUrl('assets/js/pwa-register.js'); ?>"></script>
+    <script src="<?php echo appUrl('assets/js/pwa-ui.js'); ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

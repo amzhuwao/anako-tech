@@ -131,8 +131,11 @@ $page_title = "Anako Technician Platform";
             border-color: #018a4a;
         }
     </style>
-    <link rel="stylesheet" href="/anako-tech/assets/css/affiliate-theme.css">
-    <link rel="icon" type="image/png" href="/anako-tech/assets/images/branding/anako-favicon.png">
+    <link rel="stylesheet" href="<?php echo appUrl('assets/css/affiliate-theme.css'); ?>">
+    <link rel="icon" type="image/png" href="<?php echo appUrl('assets/images/branding/anako-favicon.png'); ?>">
+    <meta name="theme-color" content="#02a75a">
+    <link rel="manifest" href="<?php echo appUrl('manifest.webmanifest'); ?>">
+    <link rel="apple-touch-icon" href="<?php echo appUrl('assets/images/branding/anako-favicon.png'); ?>">
 </head>
 <body>
     <!-- Navbar -->
@@ -240,6 +243,11 @@ $page_title = "Anako Technician Platform";
         </div>
     </footer>
 
+    <script>
+        window.ANAKO_APP_BASE = <?php echo json_encode(rtrim(appUrl(''), '/')); ?>;
+    </script>
+    <script src="<?php echo appUrl('assets/js/pwa-register.js'); ?>"></script>
+    <script src="<?php echo appUrl('assets/js/pwa-ui.js'); ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -163,13 +163,16 @@ $categories = ['Solar Technician', 'Electrician', 'CCTV Installer', 'Network Tec
             }
         }
     </style>
-    <link rel="stylesheet" href="/anako-tech/assets/css/affiliate-theme.css">
-    <link rel="icon" type="image/png" href="/anako-tech/assets/images/branding/anako-favicon.png">
+    <link rel="stylesheet" href="<?php echo appUrl('assets/css/affiliate-theme.css'); ?>">
+    <link rel="icon" type="image/png" href="<?php echo appUrl('assets/images/branding/anako-favicon.png'); ?>">
+    <meta name="theme-color" content="#02a75a">
+    <link rel="manifest" href="<?php echo appUrl('manifest.webmanifest'); ?>">
+    <link rel="apple-touch-icon" href="<?php echo appUrl('assets/images/branding/anako-favicon.png'); ?>">
 </head>
 <body>
     <div class="register-container">
         <div class="register-header">
-            <h1><img src="/anako-tech/assets/images/branding/anako-logo.png" alt="Anako Logo" class="auth-logo"> Register as Technician</h1>
+            <h1><img src="<?php echo appUrl('assets/images/branding/anako-logo.png'); ?>" alt="Anako Logo" class="auth-logo"> Register as Technician</h1>
             <p>Join Anako's Professional Technician Network</p>
         </div>
 
@@ -232,5 +235,10 @@ $categories = ['Solar Technician', 'Electrician', 'CCTV Installer', 'Network Tec
             Already have an account? <a href="login.php">Login here</a>
         </div>
     </div>
+    <script>
+        window.ANAKO_APP_BASE = <?php echo json_encode(rtrim(appUrl(''), '/')); ?>;
+    </script>
+    <script src="<?php echo appUrl('assets/js/pwa-register.js'); ?>"></script>
+    <script src="<?php echo appUrl('assets/js/pwa-ui.js'); ?>"></script>
 </body>
 </html>

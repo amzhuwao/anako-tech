@@ -182,13 +182,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             color: white;
         }
     </style>
-    <link rel="stylesheet" href="/anako-tech/assets/css/affiliate-theme.css">
-    <link rel="icon" type="image/png" href="/anako-tech/assets/images/branding/anako-favicon.png">
+    <link rel="stylesheet" href="<?php echo appUrl('assets/css/affiliate-theme.css'); ?>">
+    <link rel="icon" type="image/png" href="<?php echo appUrl('assets/images/branding/anako-favicon.png'); ?>">
+    <meta name="theme-color" content="#02a75a">
+    <link rel="manifest" href="<?php echo appUrl('manifest.webmanifest'); ?>">
+    <link rel="apple-touch-icon" href="<?php echo appUrl('assets/images/branding/anako-favicon.png'); ?>">
 </head>
 <body>
     <div class="login-container">
         <div class="login-header">
-            <h1><img src="/anako-tech/assets/images/branding/anako-logo.png" alt="Anako Logo" class="auth-logo"> Anako Technician</h1>
+            <h1><img src="<?php echo appUrl('assets/images/branding/anako-logo.png'); ?>" alt="Anako Logo" class="auth-logo"> Anako Technician</h1>
             <p>Professional Technician Registration Platform</p>
         </div>
 
@@ -255,5 +258,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             emailField.type = 'text';
         });
     </script>
+    <script>
+        window.ANAKO_APP_BASE = <?php echo json_encode(rtrim(appUrl(''), '/')); ?>;
+    </script>
+    <script src="<?php echo appUrl('assets/js/pwa-register.js'); ?>"></script>
+    <script src="<?php echo appUrl('assets/js/pwa-ui.js'); ?>"></script>
 </body>
 </html>

@@ -184,9 +184,73 @@ $suggested_skills = [
         .container {
             max-width: 900px;
         }
+        .mobile-breadcrumb-wrap {
+            display: none;
+        }
+        .mobile-breadcrumb {
+            background: white;
+            border-radius: 8px;
+            padding: 10px 14px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+        .mobile-breadcrumb .breadcrumb {
+            margin-bottom: 0;
+            font-size: 14px;
+        }
+        .mobile-breadcrumb .breadcrumb-item a {
+            text-decoration: none;
+            color: #02a75a;
+            font-weight: 600;
+        }
+        .mobile-breadcrumb .breadcrumb-item.active {
+            color: #333;
+            font-weight: 600;
+        }
+        .mobile-quick-links {
+            display: none;
+            margin-bottom: 16px;
+        }
+        .mobile-quick-links-list {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 2px 0;
+            scrollbar-width: thin;
+        }
+        .mobile-quick-link {
+            white-space: nowrap;
+            background: #ffffff;
+            border: 1px solid #dfe3e8;
+            color: #333;
+            border-radius: 999px;
+            padding: 7px 12px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .mobile-quick-link.active {
+            background: #02a75a;
+            color: #fff;
+            border-color: #02a75a;
+        }
+        @media (max-width: 767.98px) {
+            .sidebar-nav {
+                display: none;
+            }
+            .mobile-breadcrumb-wrap {
+                display: block;
+            }
+            .mobile-quick-links {
+                display: block;
+            }
+        }
     </style>
-    <link rel="stylesheet" href="/anako-tech/assets/css/affiliate-theme.css">
-    <link rel="icon" type="image/png" href="/anako-tech/assets/images/branding/anako-favicon.png">
+    <link rel="stylesheet" href="<?php echo appUrl('assets/css/affiliate-theme.css'); ?>">
+    <link rel="icon" type="image/png" href="<?php echo appUrl('assets/images/branding/anako-favicon.png'); ?>">
+        <meta name="theme-color" content="#02a75a">
+        <link rel="manifest" href="<?php echo appUrl('manifest.webmanifest'); ?>">
+        <link rel="apple-touch-icon" href="<?php echo appUrl('assets/images/branding/anako-favicon.png'); ?>">
 </head>
 <body>
     <!-- Navbar -->
@@ -221,6 +285,24 @@ $suggested_skills = [
             </div>
 
             <div class="col-md-9">
+                <div class="mobile-breadcrumb-wrap">
+                    <nav class="mobile-breadcrumb" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="<?php echo appUrl('index.php'); ?>">Home</a></li>
+                            <li class="breadcrumb-item"><a href="profile.php">My Profile</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Manage Skills</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="mobile-quick-links" aria-label="Technician menu">
+                    <div class="mobile-quick-links-list">
+                        <a href="profile.php" class="mobile-quick-link">My Profile</a>
+                        <a href="edit_profile.php" class="mobile-quick-link">Edit Profile</a>
+                        <a href="upload_documents.php" class="mobile-quick-link">Upload Documents</a>
+                        <a href="manage_skills.php" class="mobile-quick-link active">Manage Skills</a>
+                    </div>
+                </div>
+
                 <?php if (!empty($error)): ?>
                     <div class="error-message"><?php echo $error; ?></div>
                 <?php endif; ?>
@@ -276,6 +358,11 @@ $suggested_skills = [
         </div>
     </div>
 
+        <script>
+            window.ANAKO_APP_BASE = <?php echo json_encode(rtrim(appUrl(''), '/')); ?>;
+        </script>
+        <script src="<?php echo appUrl('assets/js/pwa-register.js'); ?>"></script>
+    <script src="<?php echo appUrl('assets/js/pwa-ui.js'); ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
         function addSuggestedSkill(skillName) {
