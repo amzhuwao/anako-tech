@@ -230,6 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
         <div class="login-footer">
+            <a href="<?php echo appUrl('forgot_password.php'); ?>">Forgot password?</a><br>
             Don't have an account? <a href="register.php">Register here</a>
         </div>
     </div>

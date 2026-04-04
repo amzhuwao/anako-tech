@@ -59,6 +59,22 @@ CREATE TABLE IF NOT EXISTS admin_logs (
     FOREIGN KEY (admin_id) REFERENCES admins(id) ON DELETE CASCADE,
     FOREIGN KEY (technician_id) REFERENCES technicians(id) ON DELETE SET NULL
 );
+
+-- Create Password Reset Tokens Table
+CREATE TABLE IF NOT EXISTS password_resets (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_type ENUM('technician', 'admin') NOT NULL,
+    user_id INT NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    token_hash CHAR(64) NOT NULL,
+    expires_at DATETIME NOT NULL,
+    used_at DATETIME NULL,
+    requested_ip VARCHAR(45) NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY uniq_token_hash (token_hash),
+    INDEX idx_user_lookup (user_type, user_id),
+    INDEX idx_token_active (token_hash, used_at, expires_at)
+);
 ";
 
 // Execute the schema

@@ -6,8 +6,12 @@ const APP_SHELL = [
   './offline.html',
   './manifest.webmanifest',
   './assets/js/pwa-register.js',
+  './assets/js/pwa-ui.js',
   './assets/images/branding/anako-favicon.png',
-  './assets/images/branding/anako-logo.png'
+  './assets/images/branding/anako-logo.png',
+  './assets/images/branding/pwa-192.png',
+  './assets/images/branding/pwa-512.png',
+  './assets/images/branding/pwa-512-maskable.png'
 ];
 
 self.addEventListener('install', (event) => {

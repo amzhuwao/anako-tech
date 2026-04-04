@@ -2,23 +2,31 @@
   "name": "Anako Technician Platform",
   "short_name": "Anako",
   "description": "Technician registration and admin management platform.",
+  "id": "./index.php",
   "start_url": "./index.php",
   "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#f5f7fa",
   "theme_color": "#02a75a",
   "icons": [
     {
-      "src": "./assets/images/branding/anako-favicon.png",
-      "sizes": "2048x2048",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "./assets/images/branding/anako-logo.png",
-      "sizes": "12362x7055",
+      "src": "./assets/images/branding/pwa-192.png",
+      "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "./assets/images/branding/pwa-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/images/branding/pwa-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

@@ -1,5 +1,4 @@
 <?php
-include 'includes/db.php';
 include 'includes/auth.php';
 
 $page_title = "Anako Technician Platform";
